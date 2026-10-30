@@ -2,7 +2,7 @@
 
 **Find something to cook with the ingredients already in your kitchen.**
 
-A five-person **engineering-school hackathon-style class project**, built during CentraleSupelec's one-week Coding Weeks in November 2023.
+A five-person **engineering-school hackathon-style class project**, built in one week in November 2023.
 
 ## What we built
 
@@ -10,7 +10,7 @@ A Django recipe-sharing application with user registration/login, recipe creatio
 
 ## Run locally
 
-This is a historical Django 4.2 application. Use a virtual environment and keep it local.
+This project uses Django 4.2 and is intended for local demonstration.
 
 ```bash
 python -m venv .venv
@@ -23,16 +23,14 @@ python manage.py loaddata demo
 python manage.py runserver 127.0.0.1:8000
 ```
 
-Open `http://127.0.0.1:8000`. The optional fixture contains fictional recipes and a non-login demo author. Create your own account through the app; no shared password is distributed. The app retains its original French interface.
+Open `http://127.0.0.1:8000`. The demo fixture contains sample recipes; create an account through the app to add your own. The interface is in French.
 
-## Scope and archive notes
+## Status
 
-The source comes from the final `ciy` project, including its November 24 “site fini” work and later documentation. Earlier storefront exercises and sandbox copies are excluded.
+The application supports recipe sharing and ingredient-based search. Ratings, comments, carbon estimates, and nutritional analysis remain outside the completed workflow.
 
-This is a class prototype, not a production service. Password policy and upload handling are basic; ratings, comments, carbon and nutrition fields are not presented as complete product flows. The original database, uploaded recipe photos, and embedded Django secret are excluded. Public-copy changes add setup instructions, a fictional fixture, a missing search import, an empty-photo fallback using a bundled template image, and environment-based local configuration; they do not turn the application into a new product.
+Account and upload handling are basic; use the application locally.
 
-## Team and credits
+## Team
 
-Amandine Rondot, Olga Lopez-Bodoque, Elie Juvenspan, Daouda Keita, and Mathieu Gautier. This repository presents the team's class work, not sole authorship.
-
-The original French project description is in [the archive notes](docs/ORIGINAL_README.fr.md). The interface incorporates the Feane / HTML Design template and a Colorlib login template, plus Bootstrap, jQuery, and Font Awesome. Existing notices and footer credits are retained; bundled materials retain their original rights. No new blanket license is asserted over team or third-party work.
+Amandine Rondot, Olga Lopez-Bodoque, Elie Juvenspan, Daouda Keita, and Mathieu Gautier.
