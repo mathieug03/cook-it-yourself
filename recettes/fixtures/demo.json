@@ -1,0 +1,114 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "demo-author",
+      "first_name": "Demo",
+      "last_name": "Author",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-11-24T12:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "recettes.ingredient",
+    "pk": 1,
+    "fields": {
+      "nom": "Pasta",
+      "empreintecarbone": null
+    }
+  },
+  {
+    "model": "recettes.ingredient",
+    "pk": 2,
+    "fields": {
+      "nom": "Tomato",
+      "empreintecarbone": null
+    }
+  },
+  {
+    "model": "recettes.ingredient",
+    "pk": 3,
+    "fields": {
+      "nom": "Egg",
+      "empreintecarbone": null
+    }
+  },
+  {
+    "model": "recettes.ingredient",
+    "pk": 4,
+    "fields": {
+      "nom": "Rice",
+      "empreintecarbone": null
+    }
+  },
+  {
+    "model": "recettes.recette",
+    "pk": 1,
+    "fields": {
+      "title": "Tomato pasta",
+      "photo": "",
+      "four": false,
+      "type": "Végétarien",
+      "description": "Cook pasta, warm tomatoes, and combine.",
+      "creator": 1,
+      "favoris": []
+    }
+  },
+  {
+    "model": "recettes.recetteingredient",
+    "pk": 11,
+    "fields": {
+      "recette": 1,
+      "ingredient": 1,
+      "quantite": null
+    }
+  },
+  {
+    "model": "recettes.recetteingredient",
+    "pk": 12,
+    "fields": {
+      "recette": 1,
+      "ingredient": 2,
+      "quantite": null
+    }
+  },
+  {
+    "model": "recettes.recette",
+    "pk": 2,
+    "fields": {
+      "title": "Egg fried rice",
+      "photo": "",
+      "four": false,
+      "type": "Végétarien",
+      "description": "Cook rice and stir-fry with an egg.",
+      "creator": 1,
+      "favoris": []
+    }
+  },
+  {
+    "model": "recettes.recetteingredient",
+    "pk": 23,
+    "fields": {
+      "recette": 2,
+      "ingredient": 3,
+      "quantite": null
+    }
+  },
+  {
+    "model": "recettes.recetteingredient",
+    "pk": 24,
+    "fields": {
+      "recette": 2,
+      "ingredient": 4,
+      "quantite": null
+    }
+  }
+]

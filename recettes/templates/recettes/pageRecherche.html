@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+
+  <title> Recherche </title>
+  {% load static %}
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'appli/bootstrap.css' %}" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+    integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+    crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static 'appli/style.css' %}" />
+  <!-- responsive style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'appli/responsive.css' %}" />
+
+
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .hero_area {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .header_section {
+      position: absolute;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .fixed_section {
+      position: fixed;
+      top: 47%;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background-image: url('{% static "appli/ingredients.jpg" %}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow-y: auto;
+      color: #fff;
+      backdrop-filter: blur(1px);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        background-color: rgba(255, 101, 80, 0.85);
+      }
+    }
+
+    .detail-box {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 90px;
+      text-align: center;
+    }
+
+
+    .search-section {
+      position: absolute;
+      bottom: 250px;
+      /* Adjusted to place the search box a bit higher */
+      left: 50%;
+      /* Centered horizontally */
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+    }
+
+    .search-box {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 8px;
+      border-radius: 5px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      border: none;
+      padding: 5px;
+    }
+
+    .search-box button {
+      background-color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<!--debut Titre + barre pour search -->
+
+<body>
+
+
+  <div class="hero_area">
+    <div class="bg-box"
+      style="background-image: url('{% static 'appli/bande.jpg' %}'); background-size: contain; background-position: top center; background-repeat: no-repeat; width: 100%; height: 100%;">
+
+    </div>
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <span>
+              CookItYourself
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Accueil </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="{% url 'account' %}" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+
+              </a>
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="{% url 'ajout' %}" class="order_online">
+                Nouvelle Recette
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+
+  <section class="fixed_section">
+    <div class="detail-box">
+      <h1>Trouve une recette !</h1>
+      <p>
+        Qu'as tu envie de cuisiner ?
+      </p>
+    </div>
+
+    <!-- début barre recherche  -->
+    <div class="search-section">
+      <div class="search-box">
+        <form method="get" action="{% url 'ResultatsRecherche' %}">
+          <input type="text" name="q" placeholder="Recherche...">
+          <button type="submit">j'ai faim !</button>
+        </form>
+      </div>
+    </div>
+    <!-- fin barre recherche  -->
+
+    <form method="get" action="{% url 'PageDeRecherche' %}">
+      <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
+
+
+
+
+      <footer class="footer_section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 footer-col">
+              <div class="footer_contact">
+                <h4>
+                  Contacte nous
+                </h4>
+                <div class="contact_link_box">
+                  <a href="">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>
+                      1 rue Joliot Curie, 91110 Gif-Sur-Yvette
+                    </span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                      0678697843
+                    </span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>
+                      cookityourself@gmail.com
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 footer-col">
+              <div class="footer_detail">
+                <a href="" class="footer-logo">
+                  Cook It Yourself
+                </a>
+                <div class="footer_social">
+                  <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-pinterest" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-info">
+            <p>
+              &copy; <span id="displayYear"></span> Tous droits réservés, Coding Weeks Application Web Groupe 31 -
+              <a href="https://centralesupelec.fr/">CentraleSupélec</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+</body>
+<!--fin Titre + barre pour search -->
+
+</html>
